@@ -1,4 +1,4 @@
-package com.educandoweb.course;
+package com.educandoweb.course.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,8 @@ public class UserService {
 		return Repository.findAll();
 
 	}
-	
-	public User findById(Long id){
+
+	public User findById(Long id) {
 		Optional<User> obj = Repository.findById(id);
 		return obj.get();
 	}
