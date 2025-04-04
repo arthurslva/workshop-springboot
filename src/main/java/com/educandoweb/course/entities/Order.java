@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.educandoweb.course.entities.enums.OrderStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,17 +25,21 @@ public class Order implements Serializable{
 	private Long id;
 	private Instant moment;
 	
+	private Integer OrderStatus;
+	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	public User client;
 	
 	public Order() {}
 	
-	public Order(Long id, Instant moment, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 
 		this.id = id;
 		this.moment = moment;
+		setOrderStatus(orderStatus);
 		this.client = client;
+		
 	}
 
 	public Long getId() {
@@ -50,6 +56,16 @@ public class Order implements Serializable{
 
 	public void setMoment(Instant moment) {
 		this.moment = moment;
+	}
+	
+	public Integer getOrderStatus() {
+		return Integer.valueOf(OrderStatus);
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		if (orderStatus != null) {
+		this.OrderStatus = orderStatus.getCode();
+		}
 	}
 
 	@Override
@@ -68,6 +84,8 @@ public class Order implements Serializable{
 		Order other = (Order) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 	
 	
 	
