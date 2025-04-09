@@ -15,23 +15,23 @@ public class OrderItemPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	@JoinColumn(name = "produc_id")
-	private Product produtc;
+	@JoinColumn(name = "product_id")
+	private Product product;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
 	public Product getProdutc() {
-		return produtc;
+		return product;
 	}
 	public void setProdutc(Product produtc) {
-		this.produtc = produtc;
+		this.product = produtc;
 	}
 	public Order getOrder() {
 		return order;
 	}
-	public Order setOrder(Order order) {
+	public void setOrder(Order order) {
 		this.order = order;
 	}
 	
